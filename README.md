@@ -1,1 +1,1 @@
-# recipe-app-api
+# passwordManagerAPI - back-end infrastructure for uni project
