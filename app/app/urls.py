@@ -20,9 +20,12 @@ from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView,
 )
+from core import views as core_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('v1/health-check', core_views.health_check, name='health_check'),
     path('v1/schema/', SpectacularAPIView.as_view(), name='api-schema'),
     path('v1/docs/', SpectacularSwaggerView.as_view(url_name='api-schema'),
          name='api-docs'),
