@@ -38,3 +38,21 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     objects = UserManager()
     USERNAME_FIELD = 'email'
+
+    def __str__(self):
+        return self.email
+
+
+class Website(models.Model):
+    userId = models.ManyToManyField(User)
+    websiteName = models.CharField(max_length=255, unique=True)
+    username = models.CharField(max_length=255)
+    encryptedPassword = models.CharField(max_length=999)
+    encryptedSalt = models.CharField(max_length=999)
+    isLeaked = models.BooleanField(default=False)
+    isUserCreated = models.BooleanField(default=True)
+    userNotes = models.TextField(max_length=9999)
+
+    def __str__(self):
+        return str(self.id)
+

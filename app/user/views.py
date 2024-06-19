@@ -4,10 +4,11 @@ Views for the user API
 from rest_framework import generics, authentication, permissions
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
-
+from core.models import Website as WebsiteModel
 from user.serializers import (
     UserSerializer,
     AuthTokenSerializer,
+    WebsiteSerializer,
 )
 
 
@@ -31,3 +32,23 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         """Retrieve and return authenticated user"""
         return self.request.user
+
+
+class ManageWebsitesView(generics.ListAPIView):
+    """Lists all the authenticated user's saved website credentials"""
+    serializer_class = WebsiteSerializer
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return WebsiteModel.objects.filter(userId=self.request.user.id).all()
+
+
+class ManageWebsiteView(generics.RetrieveUpdateDestroyAPIView):
+    """Manage the authenticated user's saved website credentials'"""
+    serializer_class = WebsiteSerializer
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return WebsiteModel.objects.filter(userId=self.request.user.id).all()

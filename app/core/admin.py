@@ -44,4 +44,9 @@ class UserAdmin(BaseUserAdmin):
     )
 
 
+class WebsiteAdmin(admin.ModelAdmin):
+    readonly_fields = []
+
+
 admin.site.register(models.User, UserAdmin)
+admin.site.register(models.Website, WebsiteAdmin)
