@@ -6,7 +6,7 @@ from django.contrib.auth import (
     authenticate,
 )
 from django.utils.translation import gettext as _
-
+from core.models import Website as WebsiteModel
 from rest_framework import serializers
 
 
@@ -32,6 +32,17 @@ class UserSerializer(serializers.ModelSerializer):
             user.save()
 
         return user
+
+
+class WebsiteSerializer(serializers.ModelSerializer):
+    """Serializer for the website credentials object"""
+
+    class Meta:
+        model = WebsiteModel
+        fields = ['id', 'websiteName', 'username',
+                  'encryptedPassword', 'encryptedSalt',
+                  'isLeaked', 'isUserCreated', 'userNotes'
+                  ]
 
 
 class AuthTokenSerializer(serializers.Serializer):

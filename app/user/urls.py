@@ -10,4 +10,8 @@ urlpatterns = [
     path('create/', views.CreateUserView.as_view(), name='create'),
     path('token/', views.CreateTokenView.as_view(), name='token'),
     path('me/', views.ManageUserView.as_view(), name='me'),
+    path('me/passwords/', views.ManageWebsitesView.as_view(),
+         name='passwords'),
+    path('me/passwords/<int:pk>/', views.ManageWebsiteView.as_view(),
+         name='passwords'),
 ]
