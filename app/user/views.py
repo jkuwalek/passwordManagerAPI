@@ -52,3 +52,15 @@ class ManageWebsiteView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return WebsiteModel.objects.filter(userId=self.request.user.id).all()
+
+
+class AddWebsiteView(generics.CreateAPIView):
+    """Create a new authenticated user's saved website credentials'"""
+    serializer_class = WebsiteSerializer
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(userId=self.request.user)
+
+
