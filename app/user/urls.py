@@ -14,4 +14,6 @@ urlpatterns = [
          name='passwords'),
     path('me/passwords/<int:pk>/', views.ManageWebsiteView.as_view(),
          name='passwords'),
+    path('me/passwords/add', views.AddWebsiteView.as_view(),
+         name='add'),
 ]

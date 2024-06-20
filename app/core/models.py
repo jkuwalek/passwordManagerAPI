@@ -44,7 +44,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Website(models.Model):
-    userId = models.ManyToManyField(User)
+    userId = models.ForeignKey(User, on_delete=models.CASCADE)
     websiteName = models.CharField(max_length=255, unique=True)
     username = models.CharField(max_length=255)
     encryptedPassword = models.CharField(max_length=999)
