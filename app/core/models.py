@@ -49,9 +49,10 @@ class Website(models.Model):
     username = models.CharField(max_length=255)
     encryptedPassword = models.CharField(max_length=999)
     encryptedSalt = models.CharField(max_length=999)
+    passwordStrength = models.FloatField()
     isLeaked = models.BooleanField(default=False)
     isUserCreated = models.BooleanField(default=True)
-    userNotes = models.TextField(max_length=9999)
+    userNotes = models.TextField(max_length=9999, blank=True)
 
     def __str__(self):
         return f"data-storage-id-{self.id} ({self.userId})"
