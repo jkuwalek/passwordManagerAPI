@@ -49,7 +49,7 @@ class Website(models.Model):
     username = models.CharField(max_length=255)
     encryptedPassword = models.CharField(max_length=999)
     encryptedSalt = models.CharField(max_length=999)
-    passwordStrength = models.FloatField()
+    passwordStrength = models.FloatField(default=1.0)
     isLeaked = models.BooleanField(default=False)
     isUserCreated = models.BooleanField(default=True)
     userNotes = models.TextField(max_length=9999, blank=True)
