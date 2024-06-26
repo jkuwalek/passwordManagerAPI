@@ -54,4 +54,4 @@ class Website(models.Model):
     userNotes = models.TextField(max_length=9999)
 
     def __str__(self):
-        return str(self.id)
+        return f"data-storage-id-{self.id} ({self.userId})"
