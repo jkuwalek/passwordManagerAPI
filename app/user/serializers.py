@@ -42,7 +42,8 @@ class WebsiteSerializer(serializers.ModelSerializer):
         fields = ['id', 'websiteName', 'username',
                   'encryptedPassword', 'encryptedSalt',
                   'passwordStrength',
-                  'isLeaked', 'isUserCreated', 'userNotes'
+                  'isLeaked', 'isUserCreated', 'userNotes',
+                  'creationDate'
                   ]
 
 

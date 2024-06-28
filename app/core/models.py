@@ -53,6 +53,7 @@ class Website(models.Model):
     isLeaked = models.BooleanField(default=False)
     isUserCreated = models.BooleanField(default=True)
     userNotes = models.TextField(max_length=9999, blank=True)
+    creationDate = models.TextField(max_length=9999, blank=True)
 
     def __str__(self):
         return f"data-storage-id-{self.id} ({self.userId})"
